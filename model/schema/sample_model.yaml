@@ -17,7 +17,7 @@ imports:
  - types
 
 classes:
- Person:
+  Person:
    description: Minimal information about a person
    class_uri: sdo:Person
    attributes:

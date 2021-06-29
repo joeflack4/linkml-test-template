@@ -1,3 +1,4 @@
-# Placeholder README
-This file will be replaced in the build process.  The details about how to use this template
-can be found in [ABOUT.md](./ABOUT.md).
+# LinkML A knowledge graph
+Who knows what I could do with such a thing?
+
+## [Documentation](https://joeflack4.github.io/linkml-test-template/)

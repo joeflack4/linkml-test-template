@@ -14,7 +14,7 @@ default_curi_maps:
  - semweb_context
 
 imports:
- - types
+ - linkml:types
 
 classes:
   Person:

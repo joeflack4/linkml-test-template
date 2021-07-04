@@ -1,0 +1,249 @@
+@prefix : <https://w3id.org/linkml/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/linkml/hello-world> a linkml:SchemaDefinition ;
+    linkml:classes [ a linkml:ClassDefinition ;
+            linkml:attributes [ a linkml:SlotDefinition ;
+                    linkml:multivalued true ;
+                    linkml:name "first_name" ;
+                    linkml:required true ;
+                    linkml:slot_uri "sdo:givenName" ],
+                [ a linkml:SlotDefinition ;
+                    linkml:multivalued true ;
+                    linkml:name "knows" ;
+                    linkml:range "Person" ;
+                    linkml:slot_uri "foaf:knows" ],
+                [ a linkml:SlotDefinition ;
+                    linkml:name "last_name" ;
+                    linkml:required true ;
+                    linkml:slot_uri "sdo:familyName" ],
+                [ a linkml:SlotDefinition ;
+                    linkml:identifier true ;
+                    linkml:name "id" ;
+                    linkml:slot_uri "sdo:taxID" ] ;
+            linkml:class_uri "https://schema.org/Person" ;
+            linkml:definition_uri "https://example.org/linkml/hello-world/Person" ;
+            linkml:description "Minimal information about a person" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:mappings "sdo:Person" ;
+            linkml:name "Person" ;
+            linkml:slot_usage [ ] ;
+            linkml:slots "person__first_name",
+                "person__id",
+                "person__knows",
+                "person__last_name" ],
+        [ a linkml:ClassDefinition ;
+            linkml:class_uri "https://example.org/linkml/hello-world/FriendlyPerson" ;
+            linkml:definition_uri "https://example.org/linkml/hello-world/FriendlyPerson" ;
+            linkml:description "A person who actually knows someone" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:is_a "Person" ;
+            linkml:name "FriendlyPerson" ;
+            linkml:slot_usage [ ] ;
+            linkml:slots "FriendlyPerson_knows",
+                "person__first_name",
+                "person__id",
+                "person__last_name" ] ;
+    linkml:default_curi_maps "semweb_context" ;
+    linkml:default_prefix "ex" ;
+    linkml:default_range "string" ;
+    linkml:generation_date "2021-07-03 21:00" ;
+    linkml:imports "linkml:types" ;
+    linkml:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:name "hello-world" ;
+    linkml:prefixes [ linkml:prefix_prefix "sdo" ;
+            linkml:prefix_reference "https://schema.org/" ],
+        [ linkml:prefix_prefix "ex" ;
+            linkml:prefix_reference "https://example.org/linkml/hello-world/" ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference "https://w3id.org/linkml/" ] ;
+    linkml:slots [ a linkml:SlotDefinition ;
+            linkml:alias "knows" ;
+            linkml:domain_of "Person" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:mappings "foaf:knows" ;
+            linkml:multivalued true ;
+            linkml:name "person__knows" ;
+            linkml:owner "Person" ;
+            linkml:range "Person" ;
+            linkml:slot_uri "http://xmlns.com/foaf/0.1/knows" ],
+        [ a linkml:SlotDefinition ;
+            linkml:alias "last_name" ;
+            linkml:domain_of "Person" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:mappings "sdo:familyName" ;
+            linkml:name "person__last_name" ;
+            linkml:owner "Person" ;
+            linkml:range "string" ;
+            linkml:required true ;
+            linkml:slot_uri "https://schema.org/familyName" ],
+        [ a linkml:SlotDefinition ;
+            linkml:alias "first_name" ;
+            linkml:domain_of "Person" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:mappings "sdo:givenName" ;
+            linkml:multivalued true ;
+            linkml:name "person__first_name" ;
+            linkml:owner "Person" ;
+            linkml:range "string" ;
+            linkml:required true ;
+            linkml:slot_uri "https://schema.org/givenName" ],
+        [ a linkml:SlotDefinition ;
+            linkml:alias "knows" ;
+            linkml:domain "FriendlyPerson" ;
+            linkml:domain_of "FriendlyPerson" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:is_a "person__knows" ;
+            linkml:is_usage_slot true ;
+            linkml:multivalued true ;
+            linkml:name "FriendlyPerson_knows" ;
+            linkml:owner "FriendlyPerson" ;
+            linkml:range "Person" ;
+            linkml:required true ;
+            linkml:slot_uri "https://example.org/linkml/hello-world/knows" ;
+            linkml:usage_slot_name "knows" ],
+        [ a linkml:SlotDefinition ;
+            linkml:alias "id" ;
+            linkml:domain_of "Person" ;
+            linkml:from_schema "https://example.org/linkml/hello-world" ;
+            linkml:identifier true ;
+            linkml:mappings "sdo:taxID" ;
+            linkml:name "person__id" ;
+            linkml:owner "Person" ;
+            linkml:range "string" ;
+            linkml:required true ;
+            linkml:slot_uri "https://schema.org/taxID" ] ;
+    linkml:source_file "sample_model.yaml" ;
+    linkml:source_file_date "Sat Jul  3 20:39:07 2021" ;
+    linkml:source_file_size 931 ;
+    linkml:title "Really basic LinkML model" ;
+    linkml:types [ a linkml:TypeDefinition ;
+            linkml:base "XSDTime" ;
+            linkml:definition_uri "https://w3id.org/linkml/Time" ;
+            linkml:description "A time object represents a (local) time of day, independent of any particular day" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "time" ;
+            linkml:notes "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "int" ;
+            linkml:definition_uri "https://w3id.org/linkml/Integer" ;
+            linkml:description "An integer" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "integer" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#integer" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "Decimal" ;
+            linkml:definition_uri "https://w3id.org/linkml/Decimal" ;
+            linkml:description "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "decimal" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#decimal" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "NCName" ;
+            linkml:definition_uri "https://w3id.org/linkml/Ncname" ;
+            linkml:description "Prefix part of CURIE" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "ncname" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#string" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "str" ;
+            linkml:definition_uri "https://w3id.org/linkml/String" ;
+            linkml:description "A character string" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "string" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#string" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "XSDDate" ;
+            linkml:definition_uri "https://w3id.org/linkml/Date" ;
+            linkml:description "a date (year, month and day) in an idealized calendar" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "date" ;
+            linkml:notes "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#date" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "XSDDateTime" ;
+            linkml:definition_uri "https://w3id.org/linkml/Datetime" ;
+            linkml:description "The combination of a date and time" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "datetime" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "Bool" ;
+            linkml:definition_uri "https://w3id.org/linkml/Boolean" ;
+            linkml:description "A binary (true or false) value" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "boolean" ;
+            linkml:repr "bool" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#boolean" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "float" ;
+            linkml:definition_uri "https://w3id.org/linkml/Float" ;
+            linkml:description "A real number that conforms to the xsd:float specification" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "float" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#float" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "ElementIdentifier" ;
+            linkml:comments "Used for inheritence and type checking" ;
+            linkml:definition_uri "https://w3id.org/linkml/Objectidentifier" ;
+            linkml:description "A URI or CURIE that represents an object in the model." ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "objectidentifier" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/ns/shex#iri" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "float" ;
+            linkml:definition_uri "https://w3id.org/linkml/Double" ;
+            linkml:description "A real number that conforms to the xsd:double specification" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "double" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#double" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "NodeIdentifier" ;
+            linkml:definition_uri "https://w3id.org/linkml/Nodeidentifier" ;
+            linkml:description "A URI, CURIE or BNODE that represents a node in a model." ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "nodeidentifier" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/ns/shex#nonLiteral" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "URI" ;
+            linkml:definition_uri "https://w3id.org/linkml/Uri" ;
+            linkml:description "a complete URI" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "uri" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "URIorCURIE" ;
+            linkml:definition_uri "https://w3id.org/linkml/Uriorcurie" ;
+            linkml:description "a URI or a CURIE" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "uriorcurie" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI" ] ;
+    linkml:version "0.0.1" .
+
+
+
